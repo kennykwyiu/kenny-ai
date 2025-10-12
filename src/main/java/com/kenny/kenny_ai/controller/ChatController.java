@@ -1,8 +1,10 @@
 package com.kenny.kenny_ai.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/ai")
@@ -14,11 +16,13 @@ public class ChatController {
         this.chatClient = chatClient;
     }
 
-    @RequestMapping("/chat")
-    public String chat(String prompt) {
+    @RequestMapping(value = "/chat", produces = "text/html;charset=utf-8")
+    public Flux<String> chat(String prompt) {
+        
         return chatClient.prompt()
                 .user(prompt)
-                .call()
+                .advisors(new org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor())
+                .stream()
                 .content();
     }
 }
