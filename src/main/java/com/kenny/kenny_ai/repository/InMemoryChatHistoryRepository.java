@@ -27,7 +27,8 @@ public class InMemoryChatHistoryRepository implements ChatHistoryRepository {
 
     @Override
     public List<String> getChatIds(String type) {
-        List<String> chatIds = chatHistory.get(type);
-        return chatIds == null ? new ArrayList<>() : chatIds;
+        /*List<String> chatIds = chatHistory.get(type);
+        return chatIds == null ? new ArrayList<>() : chatIds;*/
+        return chatHistory.getOrDefault(type, List.of());
     }
 }
