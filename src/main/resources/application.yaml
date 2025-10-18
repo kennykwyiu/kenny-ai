@@ -6,7 +6,12 @@ spring:
       base-url: http://localhost:11434
       chat:
         model: deepseek-r1:14b
-
+    openai:
+      base-url: https://openrouter.ai/api
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: qwen/qwen3-14b:free
 logging:
   level:
     org.springframework.ai.chat.client.advisor: debug
