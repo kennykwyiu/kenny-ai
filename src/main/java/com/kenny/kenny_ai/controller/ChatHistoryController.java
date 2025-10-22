@@ -1,6 +1,6 @@
 package com.kenny.kenny_ai.controller;
 
-import com.kenny.kenny_ai.entity.MessageVO;
+import com.kenny.kenny_ai.entity.vo.MessageVO;
 import com.kenny.kenny_ai.repository.ChatHistoryRepository;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.messages.Message;

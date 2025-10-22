@@ -1,4 +1,4 @@
-package com.kenny.kenny_ai.entity;
+package com.kenny.kenny_ai.entity.vo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
