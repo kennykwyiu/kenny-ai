@@ -37,7 +37,7 @@ public class CourseTools {
         return wrapper.list();
     }
 
-    @Tool(description = "")
+    @Tool(description = "查詢所有校區")
     public List<School> querySchool() {
         return schoolService.list();
     }
