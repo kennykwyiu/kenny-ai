@@ -20,7 +20,7 @@ public class CourseTools {
     private final ISchoolService schoolService;
     private final ICourseReservationService courseReservationService;
 
-    @Tool(description = "")
+    @Tool(description = "根據條件查詢課程")
     public List<Course> queryCourse(CourseQuery query) {
         if (query == null) {
             return List.of();
