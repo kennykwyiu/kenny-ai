@@ -21,7 +21,7 @@ public class CourseTools {
     private final ICourseReservationService courseReservationService;
 
     @Tool(description = "")
-    public List<Course> queryCourses(CourseQuery query) {
+    public List<Course> queryCourse(CourseQuery query) {
         if (query == null) {
             return List.of();
         }
