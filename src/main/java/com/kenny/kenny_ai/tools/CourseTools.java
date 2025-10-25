@@ -2,6 +2,7 @@ package com.kenny.kenny_ai.tools;
 
 import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.kenny.kenny_ai.entity.po.Course;
+import com.kenny.kenny_ai.entity.po.School;
 import com.kenny.kenny_ai.entity.query.CourseQuery;
 import com.kenny.kenny_ai.service.ICourseReservationService;
 import com.kenny.kenny_ai.service.ICourseService;
@@ -34,5 +35,10 @@ public class CourseTools {
             }
         }
         return wrapper.list();
+    }
+
+    @Tool(description = "")
+    public List<School> querySchool() {
+        return schoolService.list();
     }
 }
