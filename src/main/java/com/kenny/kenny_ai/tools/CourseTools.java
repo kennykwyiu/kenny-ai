@@ -89,4 +89,21 @@ public class CourseTools {
                 .distinct()
                 .toList();
     }
+
+    @Tool(description = "生成預約單，返回預約單號")
+    public Integer createCourseReservation(
+            @ToolParam(description = "預約課程") String course,
+            @ToolParam(description = "預約校區") String school,
+            @ToolParam(description = "學生姓名") String studentName,
+            @ToolParam(description = "聯繫電話") String contactInfo,
+            @ToolParam(description = "備註", required = false) String remark) {
+        CourseReservation courseReservation = new CourseReservation();
+        courseReservation.setCourse(course);
+        courseReservation.setSchool(school);
+        courseReservation.setStudentName(studentName);
+        courseReservation.setContactInfo(contactInfo);
+        courseReservation.setRemark(remark);
+        courseReservationService.save(courseReservation);
+        return courseReservation.getId();
+    }
 }
