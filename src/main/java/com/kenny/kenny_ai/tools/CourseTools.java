@@ -10,6 +10,7 @@ import com.kenny.kenny_ai.service.ICourseService;
 import com.kenny.kenny_ai.service.ISchoolService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -68,4 +69,24 @@ public class CourseTools {
                 .list();
     }
 
+    @Tool(description = "根據課程條件查詢哪些校區有相關課程")
+    public List<School> querySchoolsByCourse(CourseQuery query) {
+        if (query == null) {
+            return List.of();
+        }
+
+        // 直接調用現有的 queryCourse 方法
+        List<Course> matchingCourses = queryCourse(query);
+
+        if (matchingCourses.isEmpty()) {
+            return List.of();
+        }
+
+        // 使用 querySchoolsByCourseName 查詢每個課程對應的校區，然後合併結果
+        return matchingCourses.stream()
+                .map(Course::getName)
+                .flatMap(courseName -> querySchoolsByCourseName(courseName).stream())
+                .distinct()
+                .toList();
+    }
 }
