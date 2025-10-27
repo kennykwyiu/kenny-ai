@@ -1,6 +1,7 @@
 package com.kenny.kenny_ai.config;
 
 import com.kenny.kenny_ai.constants.SystemConstants;
+import com.kenny.kenny_ai.tools.CourseTools;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
@@ -46,6 +47,20 @@ public class CommonConfiguration {
                                 .builder(chatMemory)
                                 .build()
                 )
+                .build();
+    }
+
+    @Bean
+    public ChatClient serviceChatClient(OllamaChatModel model, ChatMemory chatMemory, CourseTools courseTools) {
+        return ChatClient
+                .builder(model)
+                .defaultSystem(SystemConstants.SERVICE_SYSTEM_PROMPT)
+                .defaultAdvisors(new SimpleLoggerAdvisor(),
+                        MessageChatMemoryAdvisor
+                                .builder(chatMemory)
+                                .build()
+                )
+                .defaultTools(courseTools)
                 .build();
     }
 }
