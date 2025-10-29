@@ -38,7 +38,7 @@ public class CommonConfiguration {
     }
 
     @Bean
-    public ChatClient gameChatClient(OpenAiChatModel model, ChatMemory chatMemory) {
+    public ChatClient gameChatClient(OllamaChatModel model, ChatMemory chatMemory) {
         return ChatClient
                 .builder(model)
                 .defaultSystem(SystemConstants.GAME_SYSTEM_PROMPT)
