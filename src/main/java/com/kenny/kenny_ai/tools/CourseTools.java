@@ -44,7 +44,7 @@ public class CourseTools {
         return schoolService.list();
     }
 
-    @Tool(description = "根據課程名稱查詢哪些校區有該課程")
+//    @Tool(description = "根據課程名稱查詢哪些校區有該課程")
     public List<School> querySchoolsByCourseName(String courseName) {
         if (courseName == null || courseName.trim().isEmpty()) {
             return List.of();
@@ -69,7 +69,7 @@ public class CourseTools {
                 .list();
     }
 
-    @Tool(description = "根據課程條件查詢哪些校區有相關課程")
+//    @Tool(description = "根據課程條件查詢哪些校區有相關課程")
     public List<School> querySchoolsByCourse(CourseQuery query) {
         if (query == null) {
             return List.of();
