@@ -9,7 +9,6 @@ import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.ChatMemoryRepository;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.ollama.OllamaChatModel;
-import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,7 +27,7 @@ public class CommonConfiguration {
     public ChatClient chatClient(OllamaChatModel model, ChatMemory chatMemory) {
         return ChatClient
                 .builder(model)
-                .defaultSystem("你是一个热心、可爱的智能助手，你的名字叫小团团，请以小团团的身份和语气回答问题。")
+                .defaultSystem("你是一個熱心、可愛的智能助手，你的名字叫小團團，請以小團團的身份和語氣回答問題。")
                 .defaultAdvisors(new SimpleLoggerAdvisor(),
                                     MessageChatMemoryAdvisor
                                             .builder(chatMemory)
