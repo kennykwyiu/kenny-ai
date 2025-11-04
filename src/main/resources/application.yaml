@@ -5,7 +5,10 @@ spring:
     ollama:
       base-url: http://localhost:11434
       chat:
-        model: qwen3:14b
+        model: gpt-oss:20b
+      embedding:
+        options:
+          model: bge-m3:567m
     openai:
       base-url: https://openrouter.ai/api
       api-key: ${OPENAI_API_KEY}
