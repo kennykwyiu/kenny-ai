@@ -63,6 +63,19 @@ public class VectorDistanceUtils {
         return similarity;
     }
 
+    /**
+     * Compute cosine distance in [0, 2].
+     * This is defined as 1 - cosineSimilarity.
+     *
+     * @param vectorA Vector A (non-null and same length as B)
+     * @param vectorB Vector B (non-null and same length as A)
+     * @return Cosine distance in [0, 2]
+     * @throws IllegalArgumentException if arguments are invalid or vectors are zero
+     */
+    public static double cosineDistance(float[] vectorA, float[] vectorB) {
+        return 1.0 - cosineSimilarity(vectorA, vectorB);
+    }
+
     // Common argument validation
     private static void validateVectors(float[] a, float[] b) {
         if (a == null || b == null) {
