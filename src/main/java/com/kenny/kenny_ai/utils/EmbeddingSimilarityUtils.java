@@ -9,4 +9,10 @@ import java.util.Locale;
 public final class EmbeddingSimilarityUtils {
 
     private EmbeddingSimilarityUtils() {}
+
+    private static void validate(float[] a, float[] b) {
+        if (a == null || b == null) throw new IllegalArgumentException("Vectors cannot be null");
+        if (a.length != b.length) throw new IllegalArgumentException("Vectors must have same dimension");
+        if (a.length == 0) throw new IllegalArgumentException("Vectors cannot be empty");
+    }
 }
