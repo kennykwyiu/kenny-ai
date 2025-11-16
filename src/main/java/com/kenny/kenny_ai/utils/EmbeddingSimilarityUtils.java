@@ -9,6 +9,18 @@ import java.util.Locale;
 public final class EmbeddingSimilarityUtils {
 
     private EmbeddingSimilarityUtils() {}
+    private static final double EPSILON = 1e-12;
+
+    /** Euclidean distance (smaller = more similar). Best used on L2-normalized vectors. */
+    public static double euclideanDistance(float[] a, float[] b) {
+        validate(a, b);
+        double sum = 0.0;
+        for (int i = 0; i < a.length; i++) {
+            double d = a[i] - b[i];
+            sum += d * d;
+        }
+        return Math.sqrt(sum);
+    }
 
     private static void validate(float[] a, float[] b) {
         if (a == null || b == null) throw new IllegalArgumentException("Vectors cannot be null");
