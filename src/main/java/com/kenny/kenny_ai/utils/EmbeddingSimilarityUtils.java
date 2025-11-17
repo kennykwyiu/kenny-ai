@@ -22,6 +22,12 @@ public final class EmbeddingSimilarityUtils {
         return Math.sqrt(sum);
     }
 
+
+    /** Helper to format a comparison line. */
+    public static String formatComparisonLine(int idx, double cosSim, double l2, String label) {
+        return String.format(Locale.ROOT, "%d | cos=%.4f | l2=%.4f | %s", idx, cosSim, l2, label);
+    }
+
     private static void validate(float[] a, float[] b) {
         if (a == null || b == null) throw new IllegalArgumentException("Vectors cannot be null");
         if (a.length != b.length) throw new IllegalArgumentException("Vectors must have same dimension");
