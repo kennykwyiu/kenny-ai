@@ -22,6 +22,25 @@ public final class EmbeddingSimilarityUtils {
         return Math.sqrt(sum);
     }
 
+    /** Cosine similarity in [-1, 1] (larger = more similar). */
+    public static double cosineSimilarity(float[] a, float[] b) {
+        validate(a, b);
+        double dot = 0.0, na = 0.0, nb = 0.0;
+        for (int i = 0; i < a.length; i++) {
+            dot += a[i] * b[i];
+            na  += a[i] * a[i];
+            nb  += b[i] * b[i];
+        }
+        na = Math.sqrt(na);
+        nb = Math.sqrt(nb);
+        if (na < EPSILON || nb < EPSILON) {
+            throw new IllegalArgumentException("Vectors cannot be zero vectors");
+        }
+        double sim = dot / (na * nb);
+        if (sim > 1.0) sim = 1.0;
+        else if (sim < -1.0) sim = -1.0;
+        return sim;
+    }
 
     /** Helper to format a comparison line. */
     public static String formatComparisonLine(int idx, double cosSim, double l2, String label) {
