@@ -42,6 +42,11 @@ public final class EmbeddingSimilarityUtils {
         return sim;
     }
 
+    /** Cosine distance in [0, 2]. 0 means identical direction. */
+    public static double cosineDistance(float[] a, float[] b) {
+        return 1.0 - cosineSimilarity(a, b);
+    }
+
     /** Helper to format a comparison line. */
     public static String formatComparisonLine(int idx, double cosSim, double l2, String label) {
         return String.format(Locale.ROOT, "%d | cos=%.4f | l2=%.4f | %s", idx, cosSim, l2, label);
