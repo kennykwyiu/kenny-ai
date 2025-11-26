@@ -47,6 +47,18 @@ public final class EmbeddingSimilarityUtils {
         return 1.0 - cosineSimilarity(a, b);
     }
 
+    /** L2-normalize a vector. Returns a new array. */
+    public static float[] l2Normalize(float[] v) {
+        if (v == null || v.length == 0) throw new IllegalArgumentException("Vector cannot be null or empty");
+        double n = 0.0;
+        for (float x : v) n += x * x;
+        n = Math.sqrt(n);
+        if (n < EPSILON) throw new IllegalArgumentException("Vector cannot be zero vector");
+        float[] out = new float[v.length];
+        for (int i = 0; i < v.length; i++) out[i] = (float)(v[i] / n);
+        return out;
+    }
+
     /** Helper to format a comparison line. */
     public static String formatComparisonLine(int idx, double cosSim, double l2, String label) {
         return String.format(Locale.ROOT, "%d | cos=%.4f | l2=%.4f | %s", idx, cosSim, l2, label);
