@@ -46,5 +46,8 @@ class KennyAiApplicationTests {
 				"上海发布新一轮文旅消费券 刺激假期消费"
 		};
 
+		String query2 = "国际 冲突";
+
+
 	}
 }
