@@ -17,11 +17,11 @@ class KennyAiApplicationTests {
 
 	@Test
 	void contextLoads() {
-		// 1.测试数据
-		// 1.1.用来查询的文本，国际冲突
+		// 1. Test data
+		// 1.1. Query text about international conflicts
 		String query = "national conflicts";
 
-		// 1.2.用来做比较的文本
+		// 1.2. Texts used for comparison
 		String[] texts = new String[]{
 				"哈马斯称加沙下阶段停火谈判仍在进行 以方尚未做出承诺",
 				"土耳其、芬兰、瑞典与北约代表将继续就瑞典“入约”问题进行谈判",
@@ -60,5 +60,11 @@ class KennyAiApplicationTests {
 				"新能源汽车销量再创新高 市场渗透率提升",
 				"博物馆夜场活动走红 年轻人打卡热情高涨"
 		};
+		// 2. Vectorization
+		// 2.1. First embed the query text
+		float[] queryVector = embeddingModel.embed(query2);
+		System.out.println("2.1. First embed the query text");
+		System.out.println(Arrays.toString(queryVector));
+
 	}
 }
