@@ -65,6 +65,8 @@ class KennyAiApplicationTests {
 		float[] queryVector = embeddingModel.embed(query2);
 		System.out.println("2.1. First embed the query text");
 		System.out.println(Arrays.toString(queryVector));
+		// 2.2. Then embed the comparison texts into a list
+		List<float[]> textVectors = embeddingModel.embed(Arrays.asList(texts));
 
 	}
 }
