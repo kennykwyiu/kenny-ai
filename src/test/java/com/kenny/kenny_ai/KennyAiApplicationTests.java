@@ -68,5 +68,11 @@ class KennyAiApplicationTests {
 		// 2.2. Then embed the comparison texts into a list
 		List<float[]> textVectors = embeddingModel.embed(Arrays.asList(texts));
 
+		// 3. Compare Euclidean distances
+		// 3.1. Compare the query text with itself (should be the most similar)
+		System.out.println("Compare Euclidean distance");
+		System.out.println("1. Compare the query text with itself (should be the most similar)");
+		System.out.println(VectorDistanceUtils.euclideanDistance(queryVector, queryVector));
+
 	}
 }
