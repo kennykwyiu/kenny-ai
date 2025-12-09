@@ -80,5 +80,11 @@ class KennyAiApplicationTests {
 		}
 		System.out.println("------------------");
 
+		// 4. Compare cosine distances
+		// 4.1. Compare the query text with itself (should be the most similar)
+		System.out.println("Compare cosine distance");
+		System.out.println("1. Compare the query text with itself (should be the most similar)");
+		System.out.println(VectorDistanceUtils.cosineDistance(queryVector, queryVector));
+
 	}
 }
